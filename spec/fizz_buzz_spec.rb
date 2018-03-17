@@ -15,6 +15,33 @@ describe FizzBuzz do
   end
 
   it 'will return "fizz-buzz" if number is divisible by 15' do
-    expect(subject.check(30)).to eq 'fizz-buzz'
+    expect(subject.check(30)).to eq 'fizz_buzz'
   end
+end
+
+describe Integer do
+  describe '15' do
+    let(:subject) { 15 }
+
+    it :is_divisible_by_fifteen? do
+      expect(subject).to be_divisible_by_fifteen
+    end
+  end
+
+  describe '5' do
+    let(:subject) { 5 }
+
+    it :is_divisible_by_five? do
+      expect(subject).to be_divisible_by_five
+    end
+  end
+
+  describe '3' do
+    let(:subject) { 3 }
+
+    it :is_divisible_by_three? do
+      expect(subject).to be_divisible_by_three
+    end
+  end
+
 end
