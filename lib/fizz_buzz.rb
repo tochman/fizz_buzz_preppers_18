@@ -10,7 +10,7 @@ module FizzBuzz
       elsif number.is_divisible_by_five?; say_buzz
       else
         number
-      end unless number.is_not_suitable_for_fizz_buzz
+      end unless number.not_suitable_for_fizz_buzz?
     end
 
     protected
@@ -40,7 +40,7 @@ class Integer
 end
 
 class Object
-  def is_not_suitable_for_fizz_buzz
+  def not_suitable_for_fizz_buzz?
     !self.is_a? Integer or self < 0
   end
 end

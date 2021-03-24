@@ -1,47 +1,52 @@
+# frozen_string_literal: true
+
 require './lib/fizz_buzz.rb'
 
 describe FizzBuzz do
-
-  it 'will return a number if none of the game rules are met' do
+  it 'is expected to return a number if none of the game rules are met' do
     expect(subject.check(4)).to eq 4
   end
 
-  it 'will return "fizz" if number is divisible by 3' do
+  it 'is expected to return "fizz" if number is divisible by 3' do
     expect(subject.check(6)).to eq 'fizz'
   end
 
-  it 'will return "buzz" if number is divisible by 5' do
+  it 'is expected to return "buzz" if number is divisible by 5' do
     expect(subject.check(50)).to eq 'buzz'
   end
 
-  it 'will return "fizz-buzz" if number is divisible by 15' do
+  it 'is expected to return "fizz-buzz" if number is divisible by 15' do
     expect(subject.check(30)).to eq 'fizz_buzz'
   end
 end
 
 describe Integer do
   describe '15' do
-    let(:subject) { 15 }
-
-    it :is_divisible_by_fifteen? do
-      expect(subject).to be_divisible_by_fifteen
-    end
+    subject { 15 }
+    it { is_expected.to be_divisible_by_fifteen }
   end
 
   describe '5' do
-    let(:subject) { 5 }
-
-    it :is_divisible_by_five? do
-      expect(subject).to be_divisible_by_five
-    end
+    subject { 5 }
+    it { is_expected.to be_divisible_by_five }
   end
 
   describe '3' do
-    let(:subject) { 3 }
+    subject { 3 }
+    it { is_expected.to be_divisible_by_three }
+  end
+end
 
-    it :is_divisible_by_three? do
-      expect(subject).to be_divisible_by_three
+describe Object do
+  describe 'is_not_suitable_for_fizz_buzz' do
+    describe 'string' do
+      subject { '10' }
+      it {is_expected.to be_not_suitable_for_fizz_buzz}
+    end
+
+    describe 'negative integer' do
+      subject { -10 }
+      it {is_expected.to be_not_suitable_for_fizz_buzz}
     end
   end
-
 end
